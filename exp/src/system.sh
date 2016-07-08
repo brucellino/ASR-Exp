@@ -1,18 +1,21 @@
 #!/bin/bash
 
 # script to run IsiNdebele ASR
-ROOT_DIR=~/asr
-MAIN_DIR1=$ROOT_DIR
-ASR_SCRIPTS=$ROOT_DIR/asr_template
-
 source Vars.sh
+echo ${WORKSPACE}
+export ROOT_DIR=${WORKSPACE}
+export MAIN_DIR1=$ROOT_DIR
+export ASR_SCRIPTS=$ROOT_DIR/asr_template
+export DIR_EXP=${ROOT_DIR}/exp
+
+
 
 FEAT=1
 PREPROC=1
 DO_LISTS=1
 DO_CHECK=1
-DO_TRAIN=0
-DO_EVAL=0
+DO_TRAIN=1
+DO_EVAL=1
 
 #---------------------------------------------------------
 # Create necessary directories !!
@@ -55,8 +58,11 @@ fi
 
 if [ $DO_LISTS == 1 ]; then
     echo "Generating train and test lists"
+    echo $PWD
     date >> $DIR_EXP/log/time.lists
-    bash generate_trn_tst_lists.sh 4511
+    cd $DIR_EXP/src/
+    ./generate_trn_tst_lists.sh 4511
+    #exp/generate_trn_tst_lists.sh 4511
     date >> $DIR_EXP/log/time.lists
 fi
 
@@ -98,7 +104,7 @@ if [ $DO_EVAL == 1 ]; then
     echo "running: TEST.sh words_results"
     bash TEST.sh word_results >& $DIR_EXP/log/test_$MAINBEAM.results.words.log
     date >> $DIR_EXP/log/time.test
-    
+
     #Do it again
     echo "running: TEST.sh phone_rec #2"
     bash TEST.sh phone_rec >& $DIR_EXP/log/test_$MAINBEAM.phone.log

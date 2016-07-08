@@ -1,7 +1,6 @@
 #!/bin/bash
 
 source Vars.sh
-
 NUM=$1
 C=0
 
@@ -27,4 +26,3 @@ for ln in `ls $DIR_EXP/data/proc_trans/*.txt`; do
 	fi
 	C=$(expr $C + 1)
 done
-

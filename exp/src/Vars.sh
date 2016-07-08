@@ -5,9 +5,9 @@
 # Varibles which WILL be used, and which you MUST CHANGE
 #------------------------------------------------------
 # Full path to where the top-level directory within which the experiment will be created
-export DIR_ROOT=~/asr
-export DIR_MAIN=$DIR_ROOT
-export DIR_EXP=$DIR_MAIN/exp
+export DIR_MAIN=$WORKSPACE
+export DIR_ROOT=${WORKSPACE}
+export DIR_EXP=$DIR_MAIN/exp/
 export DIR_SRC=$DIR_ROOT/asr_template/src
 export DIR_CFG=$DIR_ROOT/asr_template/config
 
@@ -45,7 +45,7 @@ export NUM_FILES_HCOMPV=500
 # REQUIRED for decoding
 #------------------------------------------------------
 export GRAMMAR=$DIR_EXP/grammar/grammar.txt
-export INS_PENALTY=-15.0	
+export INS_PENALTY=-15.0
 export GRAMMAR_SCALE=1.0
 export MLF_RESULTS=$DIR_EXP/results/test_results.mlf
 
@@ -61,7 +61,7 @@ export MLF_ALIGN_TRN=$DIR_EXP/results/align_train.mlf
 export MLF_ALIGN_TST=$DIR_EXP/results/align_test.mlf
 
 #normal alignment options - for state level add "-f"
-export PARAMS_ALIGN="-a -m" 
+export PARAMS_ALIGN="-a -m"
 
 #------------------------------------------------------
 # REQUIRED if you're going to train language models for
@@ -139,7 +139,7 @@ export DIR_HMM_NEXT=$DIR_EXP/models/hmm_$HMM_NEXT
 
 export LOG_MONO_TRAIN=$DIR_EXP/logs/mono_train.log
 export LOG_TMP=$DIR_SCRATCH/tmp.log
-export MIN_OBS=5 # Minimum number of observations in the parameter file 
+export MIN_OBS=5 # Minimum number of observations in the parameter file
 
 export NUM_MIXES=16 # Number of times mixtures will be incremented
 export MIX_INCREMENT=2 # If you change this, you have to do the logic yourself to set NUM_MIXES
