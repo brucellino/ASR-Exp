@@ -1,1 +1,0 @@
-N [n] [n], G [s], A, L, I [n], N, D, L, E [n], L, A.
